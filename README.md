@@ -1,6 +1,6 @@
-# Plants Memo
+# Plants Memo :herb:
 
-Plants Memo :herb: is a Django and Javascript app implemented to track gardening activities, a considerate gardening companion for those who know about their plants.
+Plants Memo is a Django and Javascript app implemented to track gardening activities, a considerate gardening companion for those who know about their plants.
 
 <img width="1152" alt="sc" src="https://user-images.githubusercontent.com/61316741/132177597-f045ad22-7f25-4cec-a9b1-f55e5fa22428.png">
 
