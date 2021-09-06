@@ -4,6 +4,8 @@ Plants Memo is a Django and Javascript app implemented to track gardening activi
 
 <img width="1152" alt="sc" src="https://user-images.githubusercontent.com/61316741/132177597-f045ad22-7f25-4cec-a9b1-f55e5fa22428.png">
 
+Check out [intro video](https://www.youtube.com/watch?v=FFzgqf17c8k).
+
 ## What is it and Why I build it
 
 In the endless summer the balcony becomes so hot for me to go checking daily, I always forget to water my plants on schedule and they dies on me.
