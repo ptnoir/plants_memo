@@ -2,7 +2,7 @@
 
 Plants Memo :herb: is a Django and Javascript app implemented to track gardening activities, a considerate gardening companion for those who know about their plants.
 
-! [app index page](https://user-images.githubusercontent.com/61316741/132164620-7447a166-c6e3-4918-9420-11cbbe5e87f3.png)
+<img width="1152" alt="sc" src="https://user-images.githubusercontent.com/61316741/132177597-f045ad22-7f25-4cec-a9b1-f55e5fa22428.png">
 
 ## What is it and Why I build it
 
