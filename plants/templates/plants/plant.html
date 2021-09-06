@@ -1,0 +1,206 @@
+{% extends "plants/layout.html" %}
+
+
+{% block content %}
+<!-- <h1>Single Plant Page</h1> -->
+
+
+<div class="main-container2">
+    
+    <div class="div-container">
+        <div class="left-column">
+            <div id='plantImgDiv'><img class='plantImg' src="{{ plant.image.url }}" alt="plant image"></div>
+            <div id="cmNameDiv" data-name='{{ plant }}'><h3>{{ plant }}</h3></div>
+            {% if plant.scientific_name %}
+                <div id="scNameDiv" data-scname='{{ plant.scientific_name }}'><p>{{ plant.scientific_name }}</p></div>
+            {% endif %}
+            <div id="scNameAdded" style="display:none"></div>
+
+        </div>
+        <div class="right-column"> 
+            <div>
+                <ul>
+                    <li id="categoryLi">Category: <span>{{ plant.category }}</span></li>
+                    <li id="infoLi">Plant Info: <span>{{ plant.info }}</span></li>
+                    <!-- <li id="waterPeriodLi">Watering Period: <span>{{ plant.watering_period }}</span> day(s)</li>
+                    <li id="lastWaterLi">Last watered on: <span>{{ plant.last_watered }}</span></li> -->
+                    <div class="margin-top-20">
+                        <a href="{% url 'editform' plant.id %}" class="btn myBtn">Edit Plant</a>
+                        <!-- <button id="plantEditBtn" class="myBtn">Edit Plant</button> -->
+                        <!-- <button id="plantUpdateBtn" class="myBtn" style="display: none;">Update Plant</button> -->
+                    </div>
+                </ul>            
+            </div>
+        </div>     
+    </div>
+
+    <!-- activities div-->
+    <div class="div-container-title">
+        <h4>Manage My Activities</h4>
+    </div>
+    <div class="div-container3">  
+        <div id="wateringDiv" data-plant="{{ plant.id }}"  class="activityDiv">
+            <div id="w_general" class="activityGeneral">
+                <div class="toolkit">
+                    <button id="editWBtn"><i class="far fa-edit"></i></button>
+                </div>
+                <div class="activityName"><i class="fas fa-tint"></i><span> Water</span></div>
+                <div class="activityInfo margin-top-20">
+                    <div><small id="waterPeriodLi">Period: <span>{{ plant.watering_period }}</span> day(s)</small></div>
+                    <div><small id="lastWaterLi">Last watered: <span>{{ plant.last_watered }}</span></small></div>
+                </div>
+            </div>
+
+            <!-- update form -->
+            <div id="wFormDiv" style="display: none;">
+                <button id="quitWBtn" class="quitBtn"><i class="fas fa-times"></i></button>
+                <form id="w_form" class="activityForm">
+                    <fieldset class="form-group myfieldset-sm">
+                        <label for="w_Form_period">Watering Period (days): </label>
+                        <input id="w_Form_period"  type="number"  required min="1" class="form-control form-control-sm my-form-control" value="{{ plant.watering_period }}"> 
+                    </fieldset>
+                    <fieldset class="form-group myfieldset-sm">
+                        <label for="w_Form_date">Last watered on: </label>
+                        <input id="w_Form_date" type="date" required class="form-control form-control-sm my-form-control" value='{{ plant.last_watered|date:"Y-m-d"}}'>
+                    </fieldset>
+                    <div class="form-group">
+                        <button id="w_form_btn" class="btn btn-sm myBtn" type="submit">Update</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+        <div id="fertilizingDiv" data-plant="{{ plant.id }}" class="activityDiv">        
+            {% if f %}
+                <div id="f_general" class="activityGeneral">
+                    <div class="toolkit">
+                        <button id="editFBtn"><i class="far fa-edit"></i></button>
+                        <button id="deleteFBtn"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="activityName"><i class="fas fa-fill-drip"></i><span> Fertilize</span></div>
+                    <!-- <button class="btn myBtn hideBtn">Edit</button> -->
+                    <div class="activityInfo margin-top-20">
+                        {% if f.fertilizer %}
+                            <div><small>Fertilizer: {{ f.fertilizer }}</small></div>
+                        {% endif %}
+                        <div><small>Period: <span>{{ f.period }}</span> day(s)</small></div>
+                        <div><small>Last fertilized: <span>{{ f.last_fertilized }}</span></small></div>
+                    </div>
+                </div>
+
+
+                <!-- update form -->
+                <div id="fFormEditDiv" style="display: none;">
+                    <button id="quitFBtn" class="quitBtn"><i class="fas fa-times"></i></button>
+                    <form id="f_form_edit" class="activityForm">
+                        <div id="f_form_edit_render"></div>
+                        <div class="form-group">
+                            <button id="f_form_edit_btn" class="btn btn-sm myBtn" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+            <!-- add activities -->
+            {% else %}
+                <div id="fDiv">
+                    <div><i class="fas fa-fill-drip"></i><span> Fertilize</span></div>
+                    <button id="addFBtn" class="margin-top-20 btn myBtn">+ Add</button>
+                </div>
+                <div id="fFormDiv" style="display: none;">
+                    <button id="quitAddFBtn" class="quitBtn"><i class="fas fa-times"></i></button>
+                    <form id="f_form" name="f_form" class="activityForm">
+                        <div id="f_form_render"></div>
+                        <div class="form-group">
+                            <button id="f_form_btn" class="btn btn-sm myBtn" type="submit">Add</button>
+                        </div>
+                    </form>
+                </div>
+
+            {% endif %}
+           
+        </div>
+
+        <div id="repottingDiv" data-plant="{{ plant.id }}" class="activityDiv">
+            {% if r %}
+                <div id="r_general" class="activityGeneral">
+                    <div class="toolkit">
+                        <button id="editRBtn"><i class="far fa-edit"></i></button>
+                        <button id="deleteRBtn"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="activityName"><i class="fas fa-hockey-puck"></i><span> Repot</span></div>
+                    <div class="activityInfo margin-top-20">
+                        <div><small>Period: <span>{{ r.period }}</span> year(s)</small></div>
+                        <div><small>Last repotted: <span>{{ r.last_repotted }}</span></small></div>
+                    </div>
+                </div>
+                <!-- update form -->
+                <div id="rFormEditDiv" style="display: none;">
+                    <button id="quitRBtn" class="quitBtn"><i class="fas fa-times"></i></button>
+                    <form id="r_form_edit" class="activityForm">
+                        <div id="r_form_edit_render"></div>
+                        <div class="form-group">
+                            <button id="r_form_edit_btn" class="btn btn-sm myBtn" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+
+
+            {% else %}
+
+                <div id="rDiv">
+                    <div><i class="fas fa-hockey-puck"></i><span> Repot</span></div>
+                    <button id="addRBtn" class="margin-top-20 btn myBtn">+ Add</button>
+                </div>
+                <div id="rFormDiv" style="display: none;">
+                    <button id="quitAddRBtn" class="quitBtn"><i class="fas fa-times"></i></button>
+                    <form id="r_form" name="r_form" class="activityForm">
+                        <div id="r_form_render"></div>
+                        <div class="form-group">
+                            <button id="r_form_btn" class="btn btn-sm myBtn" type="submit">Add</button>
+                        </div>
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+        
+    </div>
+
+
+
+    <!-- wiki Div -->
+    <div class="div-container2">
+        {% if plant.scientific_name %}
+            <h1>{{ plant.scientific_name }}</h1>
+            <div class="wikiSum">Fail to fetch wiki summary, please <a class="wiki_link" id="refresh">refresh</a>.</div>
+        {% else %}
+            <h4>Add a scientific name to show wiki info.</h4>
+            <div>
+                <input autofocus id="addNameInput" type="text" placeholder="Scientific Name"> 
+                <button id="addNameBtn" data-plant="{{ plant.id }}" class="btn btn-outline-light">Add</button>
+            </div>
+            
+        {% endif %}
+    </div>
+
+    <!-- <div class="div-container4">
+        my memo /
+        watering Calendar
+        <button id="test">Test</button>
+    </div> -->
+
+</div>
+
+<div class="popup-container">
+    <div class="popup  btn-outline-secondary">
+        <h3>Remove <span id="act_name">XXX</span> ?</h3>
+        <div>
+            <button id="act_yesBtn" class="myBtn btn-danger">Yes</button>
+            <button id="act_noBtn" class="myBtn btn-light">No</button>
+        </div>
+
+    </div>
+</div>
+
+
+
+{% endblock %}

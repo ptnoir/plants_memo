@@ -1,0 +1,47 @@
+{% extends "plants/layout.html" %}
+
+
+{% block content %}
+    <div class="main-container2">
+    {% if edit %}
+        <form class="myform" action="{% url 'editform' plant_id %}" method="post" enctype="multipart/form-data">
+    {% else %}
+        <form class="myform" action="{% url 'addplant' %}" method="post" enctype="multipart/form-data">
+    {% endif %}
+        <!-- <form class="myform" action="{% url 'addplant' %}" method="post" enctype="multipart/form-data"> -->
+            {% csrf_token %}
+            {% if edit %}
+                <legend class="border-bottom mb-4">Edit Plant</legend>
+            {% else %}
+                <legend class="border-bottom mb-4">Add Plant</legend>
+            {% endif %}
+            
+
+            {% for field in form %}
+                <fieldset class="form-group">
+                    <label for="id_{{ field.name }}">{{ field.label }}
+                    {% if field.help_text %}
+                    <span class="help-text text-muted">{{ field.help_text }}</span>
+                    {% endif %}
+                    :
+                    </label>
+                    <div class="form-control my-form-control">
+                        {{ field }}
+                    </div>
+                    
+                </fieldset>
+            {% endfor %}
+
+            <div class="form-group">
+                {% if edit %}
+                    <button class="btn myBtn" type="submit">Edit Plant</button>
+                {% else %}
+                    <button class="btn myBtn" type="submit">Add Plant</button>
+                {% endif %}
+            </div>
+        </form>
+
+    </div>
+    
+    
+{% endblock %}

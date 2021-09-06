@@ -1,0 +1,84 @@
+
+
+{% extends "plants/layout.html" %}
+
+{% block content %}
+    
+    <div class="main-container">
+        <h3 class="text-center"> My plants</h3>
+        <div class="plants">
+            {% for plant in plants %}          
+                <div class="plant" data-plant="{{ plant.id }}">     
+                    <img class="thumbnail" src="{{ plant.image.url }}" alt="plant image" class="thumbnail">
+                    <button data-name="{{ plant }}" class="btn btn-warning deleteBtn"><i class="fas fa-times"></i></button>
+                    
+                    <div class="infoDiv">
+                        <h5 class="text-center fw-bold"><a href="{% url 'plant' plant.id %}">{{ plant }}</a></h5>
+                        
+                        <ul class="todos">
+                            {% if plant.to_water %}
+                                <li>      
+                                    <input type="checkbox" class="water_checkbox">
+                                    <span class="towater"><span class="equalWidth"> Water </span><i class="fas fa-tint"></i></span>
+<!--                                     
+                                    <span class="towater"><i class="fas fa-tint equalWidthI"></i> <span class="equalWidth"> Water </span></span>
+                                    <input type="checkbox" class="water_checkbox"> -->
+                                </li>
+                            {% endif %}
+                            {% if plant.to_fertilize %}
+                                <li>
+                                    <input type="checkbox" class="f_checkbox">
+                                    <span class="to_f"><span class="equalWidth"> Fertilize </span><i class="fas fa-fill-drip"></i></span>
+                                    
+                                    <!-- <span class="to_f"><i class="fas fa-fill-drip equalWidthI"></i> <span class="equalWidth"> Fertilize </span></span>
+                                    <input type="checkbox" class="f_checkbox"> -->
+                                </li>
+                            {% endif %}
+                            {% if plant.to_repot %}
+                                <li>
+                                    <input type="checkbox" class="r_checkbox">
+                                    <span class="to_r"><span class="equalWidth"> Repot </span><i class="fas fa-hockey-puck"></i></span>
+                                    
+                                    <!-- <span class="to_r"><i class="fas fa-hockey-puck equalWidthI"></i> <span class="equalWidth"> Repot </span></span>
+                                    <input type="checkbox" class="r_checkbox"> -->
+                                </li>
+                            {% endif %}
+                            <!-- <li>
+                                <input type="checkbox" name="" id="">
+                                <span>Repot</span>
+                            </li> -->
+                        </ul>
+                        <div><small class="waterinfo text-muted text-center">Last watered on: {{ plant.last_watered }}</small></div>
+
+                        <div class="infoTextDiv">
+                            {% if plant.has_f %}
+                                <div><small class="finfo text-muted text-center">Last fertilized on: {{ plant.last_fertilized }}</small></div>
+                            {% endif %}
+                            {% if plant.has_r %}
+                                <div><small class="rinfo text-muted text-center">Last repotted on: {{ plant.last_repotted }}</small></div>
+                            {% endif %}
+                        </div>
+                        
+                        
+                    </div>  
+                </div>
+            {% endfor %}
+            <div class="addplant">
+                <h4><a href="{% url 'addplant' %}"><i class="fas fa-plus"></i>  Add a plant</a>
+                    </h4>
+            </div>
+
+        </div>
+    </div>
+    <div class="popup-container">
+        <div class="popup  btn-outline-secondary">
+            <h3>Delete <span id="plant_name">XXX</span> ?</h3>
+            <div>
+                <button id="yesBtn" class="myBtn btn-danger">Yes</button>
+                <button id="noBtn" class="myBtn btn-light">No</button>
+            </div>
+            
+        </div>
+    </div>
+    
+{% endblock %}
