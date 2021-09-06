@@ -24,9 +24,9 @@ On the simple idea of keeping records of the last time I watered plants and calc
 - Save/update plant info anytime.
 
 - Manage gardening activities:  
- With considerations for varying growing environments of plants, user can specify and alter their own schedule of gardening activities instead of setting a fixed one. (with the normal activity frequecy suggested)
+ With considerations for varying growing environments of plants, user can specify and alter their own schedule of gardening activities instead of setting a fixed one. (with the normal activity frequency suggested)
 
-- When a scientific name for the plant is available or on added, wiki extract will generate for users to learn more about the plants in garden.
+- When a scientific name for the plant is available or on added, wiki extract will generate for users to learn more about their plants in garden.
 
 
 
@@ -56,7 +56,7 @@ On the simple idea of keeping records of the last time I watered plants and calc
 
 - Customized CSS
 
-- For minimalistic UI, details are designed as hover to display.
+- For minimalistic UI, most details are designed as hover to display.
 
 
 
