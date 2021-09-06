@@ -8,7 +8,7 @@ Check out [intro video](https://www.youtube.com/watch?v=FFzgqf17c8k).
 
 ## What is it and Why I build it
 
-In the endless summer the balcony becomes so hot for me to go checking daily, I always forget to water my plants on schedule and they dies on me.
+In the endless summer the balcony becomes so hot for me to go checking daily, I always forget to water my plants on schedule and they die on me.
 
 On the simple idea of keeping records of the last time I watered plants and calculating the next date with normal watering schedule with each plant, I implement this gardening work tracking application to get notified as a todo task when the next event comes without me going out to feel the soil and observe leaves everyday, and also enjoy crossing off all the checkboxes after completing the garden work.
 
