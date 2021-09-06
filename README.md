@@ -1,11 +1,10 @@
 # Plants Memo
----
 
 Plants Memo :herb: is a Django and Javascript app implemented to track gardening activities, a considerate gardening companion for those who know about their plants.
 
 ! [app index page](https://user-images.githubusercontent.com/61316741/132164620-7447a166-c6e3-4918-9420-11cbbe5e87f3.png)
 
-## Description - What is it and Why I build it
+## What is it and Why I build it
 
 In the endless summer the balcony becomes so hot for me to go checking daily, I always forget to water my plants on schedule and they dies on me.
 
@@ -60,7 +59,6 @@ On the simple idea of keeping records of the last time I watered plants and calc
 
 
 ## What's in the file
----
 
 In the file is a Django project called Capstone that contains a single app called Plants, structured similarly to other pset project apps in CS50 Web. 
 
