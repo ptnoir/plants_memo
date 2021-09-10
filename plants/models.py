@@ -5,7 +5,7 @@ import datetime
 from django.utils import timezone
 from PIL import Image
 
-
+from django.core.files.storage import default_storage as storage
 
 
 # Create your models here.
@@ -87,11 +87,18 @@ class Plant(models.Model):
     def save(self):
         super().save()
         if self.image:
+            # img = Image.open(self.image)
             img = Image.open(self.image.path)
             if img.height > 320 or img.width > 320:
                 output_size = (320, 320)
                 img.thumbnail(output_size)
-                img.save(self.image.path) 
+                # img.save(self.image.path)
+
+                storage_path = storage.open(self.image.name, "wb")
+                img.save(storage_path, 'png')
+                storage_path.close()
+
+                
 
     def serialize(self):
 
