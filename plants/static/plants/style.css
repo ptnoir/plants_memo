@@ -263,7 +263,7 @@ a:hover{
     margin: 20px auto;
     height: 300px;
     width: 300px;
-    /* object-fit: cover; */
+    object-fit: cover;
 }
 
 .editInput{
