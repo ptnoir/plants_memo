@@ -89,8 +89,8 @@ class Plant(models.Model):
         if self.image:
             img = Image.open(self.image)
             # img = Image.open(self.image.path)
-            if img.height > 320 or img.width > 320:
-                output_size = (320, 320)
+            if img.height > 500 or img.width > 500:
+                output_size = (500, 500)
                 img.thumbnail(output_size)
                 # img.save(self.image.path)
 
