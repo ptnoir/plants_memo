@@ -9,3 +9,8 @@ gunicorn
 boto3
 botocore
 django-storages
+
+whitenoise, 
+psycopg2, 
+dj-database-url, 
+django-heroku
