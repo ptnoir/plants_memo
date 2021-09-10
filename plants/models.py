@@ -84,14 +84,14 @@ class Plant(models.Model):
     def __str__(self):
         return self.common_name
 
-    def save(self):
-        super().save()
-        if self.image:
-            img = Image.open(self.image.path)
-            if img.height > 320 or img.width > 320:
-                output_size = (320, 320)
-                img.thumbnail(output_size)
-                img.save(self.image.path) 
+    # def save(self):
+    #     super().save()
+    #     if self.image:
+    #         img = Image.open(self.image.path)
+    #         if img.height > 320 or img.width > 320:
+    #             output_size = (320, 320)
+    #             img.thumbnail(output_size)
+    #             img.save(self.image.path) 
 
     def serialize(self):
 
